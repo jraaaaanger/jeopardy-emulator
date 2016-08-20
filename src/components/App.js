@@ -1,12 +1,12 @@
 import React from 'react';
-import GroceryList from './GroceryList';
+import Game from './Game';
 
 const App = props => {
   return (
     <div>
-      <h1>Grocery List!</h1>
-      <GroceryList
-        groceries={props.groceries} />
+      <h1>Jeopardy</h1>
+      <Game
+        categories={props.categories} />
     </div>
   )
 }
