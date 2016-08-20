@@ -29,10 +29,7 @@ var Board = React.createClass({
 
   render() {
     return (
-      <Clue
-        question="What is the answer to life, the universe, and everything?"
-        answer="42"
-        points="800" />
+    
     );
   }
 })
