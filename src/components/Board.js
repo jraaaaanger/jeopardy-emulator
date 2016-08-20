@@ -4,21 +4,18 @@ import Column from './Column';
 var $ = require ('jquery');
 
 var Board = React.createClass({
-
-  getInitialState: function() {
-    return {
-      themes: [],
-      clues: [],
-      score: 0
-    };
-  },
+    getInitialState: function() {
+      return {
+        themes: [],
+        score: 0
+      };
+    },
 
   componentDidMount: function() {
-    this.source = 'http://jservice.io/api/random?count=6';
-    this.serverRequest = $.get(this.source, (result) => {
+    var source = 'http://jservice.io/api/random?count=6';
+    this.serverRequest = $.get(source, function (result) {
       let themesList = []
-      var i = 0;
-      for (i = 0; i < 6; i++) {
+      for (var i = 0; i < 6; i++) {
         let themeID = result[i].category.id
         let theme = result[i].category.title
         themesList.push({'id': themeID, 'title': theme})
@@ -26,12 +23,26 @@ var Board = React.createClass({
       this.setState({
         themes: themesList
       })
-    });
+    }.bind(this));
   },
 
-  render() {
+  componentWillUnmount: function() {
+    this.serverRequest.abort();
+  },
+
+  render: function() {
+    let themeState = this.state.themes
+
+    if (themeState.length > 0){
+      var themeNumber = themeState[0].id
+      var themeName = themeState[0].title
+    } else {
+      var themeNumber = ""
+      var themeName = ""
+    }
+
     return (
-      <Column theme="test" themeID="42" />
+      <Column theme={themeName} themeID={themeNumber} />
     )
   }
 })

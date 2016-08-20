@@ -16,9 +16,12 @@ var Column = React.createClass({
     let clues = this.state.clues
 
     return(
+      <div>
+      {this.state.theme}
       <Clue
       themeID={this.state.themeID}
       points ="200" />
+      </div>
     )
   }
 });
