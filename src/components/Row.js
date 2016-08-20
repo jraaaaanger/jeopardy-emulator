@@ -24,7 +24,7 @@ var Row = React.createClass({
     return (
       <div>
         {themes.map( themeObj => {
-           return (<Clue points="200" themeID={themeObj.id} />)
+           return (<Clue points={pointValue} themeID={themeObj.id} />)
         })}
       </div>
        )
