@@ -1,5 +1,8 @@
 import React from 'react';
 import Grocery from './Grocery';
+import {Card} from 'react-materialize';
+
+
 
 class GroceryList extends React.Component {
   constructor(props) {
@@ -32,7 +35,9 @@ class GroceryList extends React.Component {
     });
 
     return (
-      <ul>{groceryList}</ul>
+      <div className="card-panel teal lighten-2">
+        <ul>{groceryList}</ul>
+      </div>
     );
   }
 }
