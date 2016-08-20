@@ -1,6 +1,6 @@
 import React from 'react';
 import Clue from './Clue';
-import Row from './Row';
+import BoardRow from './Row';
 import {Button, Card, Row, Col} from 'react-materialize';
 
 var $ = require ('jquery');
@@ -34,7 +34,7 @@ var Board = React.createClass({
 
   render() {
     var themeState = this.state.themes
-    var row = <Row themes={themeState} points="200" />
+    var row = <BoardRow themes={themeState} points="200" />
 
     return (
       <div>
