@@ -12,10 +12,10 @@ var Board = React.createClass({
     },
 
   componentDidMount: function() {
-    var source = 'http://jservice.io/api/random?count=6';
+    var source = 'http://jservice.io/api/random?count=5';
     this.serverRequest = $.get(source, function (result) {
       let themesList = []
-      for (var i = 0; i < 6; i++) {
+      for (var i = 0; i < 5; i++) {
         let themeID = result[i].category.id
         let theme = result[i].category.title
         themesList.push({'id': themeID, 'title': theme})
@@ -33,17 +33,13 @@ var Board = React.createClass({
   render: function() {
     let themeState = this.state.themes
 
-    if (themeState.length > 0){
-      var themeNumber = themeState[0].id
-      var themeName = themeState[0].title
-    } else {
-      var themeNumber = ""
-      var themeName = ""
-    }
-
     return (
-      <Column theme={themeName} themeID={themeNumber} />
-    )
+        <div>
+          {themeState.map((themeObj) => {
+             return <Column theme={themeObj.title} themeID={themeObj.id} />
+          })}
+        </div>
+     )
   }
 })
 

@@ -20,7 +20,19 @@ var Column = React.createClass({
       {this.state.theme}
       <Clue
       themeID={this.state.themeID}
+      points ="100" />
+      <Clue
+      themeID={this.state.themeID}
       points ="200" />
+      <Clue
+      themeID={this.state.themeID}
+      points ="300" />
+      <Clue
+      themeID={this.state.themeID}
+      points ="400" />
+      <Clue
+      themeID={this.state.themeID}
+      points ="500" />
       </div>
     )
   }
