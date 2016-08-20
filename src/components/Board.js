@@ -1,6 +1,8 @@
 import React from 'react';
 import Clue from './Clue';
 import Row from './Row';
+import {Button, Card, Row, Col} from 'react-materialize';
+
 var $ = require ('jquery');
 
 var Board = React.createClass({

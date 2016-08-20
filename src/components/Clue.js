@@ -1,4 +1,5 @@
 var React = require('react');
+import {Button, Card, Row, Col} from 'react-materialize';
 var $ = require('jquery');
 
 var Clue = React.createClass({
