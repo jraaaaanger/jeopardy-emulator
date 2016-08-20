@@ -1,6 +1,7 @@
 import React from 'react';
 import Clue from './Clue';
 import Column from './Column';
+import Row from './Row';
 var $ = require ('jquery');
 
 var Board = React.createClass({
@@ -30,16 +31,15 @@ var Board = React.createClass({
     this.serverRequest.abort();
   },
 
-  render: function() {
-    let themeState = this.state.themes
+  render() {
+    var themeState = this.state.themes
+    var row = <Row themes={themeState} points="200" />
 
     return (
-        <div>
-          {themeState.map((themeObj) => {
-             return <Column theme={themeObj.title} themeID={themeObj.id} />
-          })}
-        </div>
-     )
+      <div>
+      {row}
+      </div>
+    )
   }
 })
 
