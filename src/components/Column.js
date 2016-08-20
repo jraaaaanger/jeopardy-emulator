@@ -1,7 +1,7 @@
 import React from 'react';
-import Category from './Category';
 import Clue from './Clue';
 var $ = require('jquery');
+import {Button, Card, Row, Col} from 'react-materialize';
 
 var Column = React.createClass({
   getInitialState: function() {
@@ -14,10 +14,8 @@ var Column = React.createClass({
 
   render() {
     let clues = this.state.clues
-
     return(
       <div>
-      {this.state.theme}
       <Clue
       themeID={this.state.themeID}
       points ="100" />
