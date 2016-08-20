@@ -5,21 +5,22 @@ var $ = require('jquery');
 
 var Column = React.createClass({
   getInitialState: function() {
-    theme: this.props.theme,
-    themeID: this.props.themeID,
-    clues: this.props.clues
+    return {
+      theme: this.props.theme,
+      themeID: this.props.themeID,
+      clues: null
+    }
   },
 
   render() {
-    return(
-    <Category category={this.state.theme}>
     let clues = this.state.clues
-    for (i = 0; i < clues.length; i++) {
+
+    return(
       <Clue
-       question={clues[i].question},
-       answer={clues[i].answer} />
-    }
-  )}
+      themeID={this.state.themeID}
+      points ="200" />
+    )
+  }
 });
 
 module.exports = Column;

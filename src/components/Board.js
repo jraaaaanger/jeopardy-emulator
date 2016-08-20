@@ -1,5 +1,6 @@
 import React from 'react';
 import Clue from './Clue';
+import Column from './Column';
 var $ = require ('jquery');
 
 var Board = React.createClass({
@@ -19,7 +20,8 @@ var Board = React.createClass({
       var i = 0;
       for (i = 0; i < 6; i++) {
         let themeID = result[i].category.id
-        themesList.push(themeID)
+        let theme = result[i].category.title
+        themesList.push({'id': themeID, 'title': theme})
       }
       this.setState({
         themes: themesList
@@ -29,8 +31,8 @@ var Board = React.createClass({
 
   render() {
     return (
-    
-    );
+      <Column theme="test" themeID="42" />
+    )
   }
 })
 
