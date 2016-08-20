@@ -1,1 +1,10 @@
 @import 'stylesheets/App';
+
+$jeo-blue: #0200a6;
+
+.clues {
+  background-color: $jeo-blue;
+  color: white;
+  text-align: center;
+  border: 3px solid black;
+}

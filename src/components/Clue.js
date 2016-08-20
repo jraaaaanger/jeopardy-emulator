@@ -27,12 +27,9 @@ var Clue = React.createClass({
 
   render() {
     return (
-      <div className="clue-card">
-        <ul>
-          <li>Q: {this.state.question}</li>
-          <li>A: {this.state.answer}</li>
-        </ul>
-      </div>
+      <Col className='clues' l='2' m='4'>
+          {this.state.points}
+      </Col>
     );
   }
 });
