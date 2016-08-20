@@ -24,7 +24,7 @@ var Clue = React.createClass({
     )
   },
 
-  render: function() {
+  render() {
     return (
       <div className="clue-card">
         <ul>
