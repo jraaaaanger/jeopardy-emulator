@@ -1,6 +1,5 @@
 import React from 'react';
 import Clue from './Clue';
-import Column from './Column';
 import Row from './Row';
 var $ = require ('jquery');
 

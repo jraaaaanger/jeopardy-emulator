@@ -20,7 +20,6 @@ var Row = React.createClass({
   render() {
     let pointValue = this.state.points
     var themes = this.state.themes
-    debugger;
 
     return (
       <div>
