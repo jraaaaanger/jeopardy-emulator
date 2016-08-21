@@ -1,10 +1,51 @@
 @import 'stylesheets/App';
+@font-face {
+	font-family:"Helvetica-Compressed";
+	src:url("http://www.myfontfree.com/data/1/h/helvetica-compressed/unicode.helvetic.ttf");
+}
 
 $jeo-blue: #0200a6;
+$point-color: #d59e53;
+$shadow: #000000;
 
 .clues {
   background-color: $jeo-blue;
+  color: $point-color;
+  text-align: center;
+  border: 1px solid black;
+  font-family: "Helvetica-Compressed";
+  font-weight: bolder;
+  font-size: 52px;
+  height: 100px;
+  padding-top: 5px;
+}
+
+.full-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.shadow {
+  left: -1px;
+  position: relative;
+  text-shadow: 1px 1px $shadow,
+              2px 2px $shadow,
+              3px 3px $shadow;
+  top: -1px;
+}
+
+.categories {
+  background-color: $jeo-blue;
   color: white;
   text-align: center;
-  border: 3px solid black;
+  border: 1px solid black;
+  font-family: "Helvetica-Compressed";
+  font-weight: bolder;
+  font-size: 26px;
+  height: 100px;
+}
+
+.row {
+  margin: 0;
 }

@@ -27,8 +27,8 @@ var Clue = React.createClass({
 
   render() {
     return (
-      <Col className='clues' l='2' m='4'>
-          {this.state.points}
+      <Col className='clues shadow' l='2' m='4'>
+          <div className='full-center'>{this.state.points}</div>
       </Col>
     );
   }

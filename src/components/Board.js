@@ -1,6 +1,7 @@
 import React from 'react';
 import Clue from './Clue';
 import BoardRow from './BoardRow';
+import Category from './Category';
 import {Button, Card, Row, Col} from 'react-materialize';
 
 var $ = require ('jquery');
@@ -34,13 +35,24 @@ var Board = React.createClass({
 
   render() {
     var themeState = this.state.themes
-    var pointValues =[100, 200, 300, 400, 500]
+    var pointValues = [100, 200, 300, 400, 500]
 
-    var row = <BoardRow themes={themeState} points="200" />
+    var categories = themeState.map(themeObj => {
+      return (
+        <Category category={themeObj.title.toUpperCase()} />
+      )
+    })
+
+    var rows = pointValues.map(points => {
+      return (
+        <BoardRow themes={themeState} points={points} />
+      )
+    });
 
     return (
       <div>
-      {row}
+        <Row>{categories}</Row>
+        {rows}
       </div>
     )
   }
