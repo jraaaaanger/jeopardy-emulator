@@ -1,1 +1,22 @@
-/* YOUR STYLING HERE */
+$jeo-blue: #0200a6;
+$point-color: #d59e53;
+$black: #000000;
+
+.full-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.shadow {
+  left: -1px;
+  position: relative;
+  text-shadow: 1px 1px $black,
+              2px 2px $black,
+              3px 3px $black;
+  top: -1px;
+}
+
+.row {
+  margin: 0;
+}

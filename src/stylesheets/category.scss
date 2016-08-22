@@ -1,0 +1,14 @@
+$jeo-blue: #0200a6;
+$point-color: #d59e53;
+$black: #000000;
+
+.categories {
+  background-color: $jeo-blue;
+	border: 1px solid $black;
+  color: white;
+	font-family: "Helvetica-Compressed";
+	font-size: 26px;
+	font-weight: bolder;
+  text-align: center;
+  height: 100px;
+}

@@ -1,0 +1,25 @@
+$jeo-blue: #0200a6;
+$point-color: #d59e53;
+$black: #000000;
+$white: #ffffff;
+
+.clues {
+	background-color: $jeo-blue;
+	border: 1px solid $black;
+  color: $point-color;
+	font-family: "Helvetica-Compressed";
+	font-size: 52px;
+  font-weight: bolder;
+  height: 100px;
+  padding-top: 5px;
+	text-align: center;
+}
+
+.full-clue {
+  background-color: $jeo-blue;
+	color: $white;
+  font-family: "ITCKorinnaW01-Regular";
+	font-size: 50px;
+	text-align: center;
+	padding: 40px;
+}

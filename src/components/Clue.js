@@ -16,14 +16,15 @@ var Clue = React.createClass({
     this.source = 'http://jservice.io/api/clues?category=' + this.state.themeID + '&value='
     let getClues = $.get(this.source + this.state.points, (result) => {
       var randomClue = result[Math.floor(Math.random()*result.length)]
+
       this.setState({
-        question: randomClue.question,
+        question: randomClue.question.toUpperCase(),
         answer: randomClue.answer
       })
       }
     )
   },
-  
+
   //called to add the event listener once the clue has question in state
   componentDidUpdate: function() {
     bindToClick();
@@ -38,8 +39,8 @@ var Clue = React.createClass({
           <div className='full-center'>{this.state.points}</div>
         </a>
         <div id={modalID} className='modal'>
-          <div className='modal-content'>
-            <h4>{this.state.question}</h4>
+          <div className='full-clue modal-content'>
+            <div className='shadow'>{this.state.question}</div>
           </div>
         </div>
       </div>
