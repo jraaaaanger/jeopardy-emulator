@@ -12,6 +12,6 @@ app.get('/', function (req, res) {
   res.render('build/index.html');
 });
 
-app.listen(3000, function () {
-  console.log('App running on Port 3000!');
+app.listen(app.get('port'), function () {
+  console.log('App running on Port', app.get('port'));
 });
