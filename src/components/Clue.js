@@ -23,11 +23,25 @@ var Clue = React.createClass({
       }
     )
   },
+  
+  //called to add the event listener once the clue has question in state
+  componentDidUpdate: function() {
+    bindToClick();
+  },
 
   render() {
+    let modalID = this.state.themeID + '-' + this.state.points
+    let modalHref = '#' + modalID
     return (
-      <div className='col clues shadow l2 m4'>
+      <div>
+        <a className='col clues shadow l2 m4 btn modal-trigger' href={modalHref}>
           <div className='full-center'>{this.state.points}</div>
+        </a>
+        <div id={modalID} className='modal'>
+          <div className='modal-content'>
+            <h4>{this.state.question}</h4>
+          </div>
+        </div>
       </div>
     );
   }
