@@ -1,8 +1,6 @@
 import React from 'react';
-import Clue from './Clue';
 import BoardRow from './BoardRow';
 import Category from './Category';
-import {Button, Card, Row, Col} from 'react-materialize';
 
 var $ = require ('jquery');
 
@@ -51,7 +49,7 @@ var Board = React.createClass({
 
     return (
       <div>
-        <Row>{categories}</Row>
+        <div className="row">{categories}</div>
         {rows}
       </div>
     )

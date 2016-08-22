@@ -1,5 +1,4 @@
 var React = require('react');
-import {Button, Card, Row, Col} from 'react-materialize';
 var $ = require('jquery');
 
 var Clue = React.createClass({
@@ -27,9 +26,9 @@ var Clue = React.createClass({
 
   render() {
     return (
-      <Col className='clues shadow' l='2' m='4'>
+      <div className='col clues shadow l2 m4'>
           <div className='full-center'>{this.state.points}</div>
-      </Col>
+      </div>
     );
   }
 });
