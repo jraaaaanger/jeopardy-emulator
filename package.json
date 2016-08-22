@@ -1,9 +1,10 @@
 {
   "name": "jeopardy-emulator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A jeopardy emulator in React.js",
   "main": "webpack.config.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -19,7 +20,12 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jraaaaanger/jeopardy-emulator"
+  },
   "dependencies": {
+    "express": "^4.14.0",
     "jquery": "^3.1.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"

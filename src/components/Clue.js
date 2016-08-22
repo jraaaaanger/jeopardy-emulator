@@ -1,5 +1,4 @@
 var React = require('react');
-import {Button, Card, Row, Col} from 'react-materialize';
 var $ = require('jquery');
 
 var Clue = React.createClass({
@@ -17,19 +16,34 @@ var Clue = React.createClass({
     this.source = 'http://jservice.io/api/clues?category=' + this.state.themeID + '&value='
     let getClues = $.get(this.source + this.state.points, (result) => {
       var randomClue = result[Math.floor(Math.random()*result.length)]
+
       this.setState({
-        question: randomClue.question,
+        question: randomClue.question.toUpperCase(),
         answer: randomClue.answer
       })
       }
     )
   },
 
+  //called to add the event listener once the clue has question in state
+  componentDidUpdate: function() {
+    bindToClick();
+  },
+
   render() {
+    let modalID = this.state.themeID + '-' + this.state.points
+    let modalHref = '#' + modalID
     return (
-      <Col className='clues shadow' l='2' m='4'>
+      <div>
+        <a className='col clues shadow l2 m4 btn modal-trigger' href={modalHref}>
           <div className='full-center'>{this.state.points}</div>
-      </Col>
+        </a>
+        <div id={modalID} className='modal'>
+          <div className='full-clue modal-content'>
+            <div className='shadow'>{this.state.question}</div>
+          </div>
+        </div>
+      </div>
     );
   }
 });
