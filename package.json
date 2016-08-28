@@ -7,8 +7,8 @@
     "node": "5.9.1"
   },
   "scripts": {
-    "build": "webpack --config ./webpack.prod.config.js --progress",
-    "start": "npm build && node app.js"
+    "build": "webpack --config ./webpack.config.js --progress",
+    "start": "webpack --config ./webpack.config.js --progress && node app.js"
   },
   "author": "",
   "license": "ISC",
