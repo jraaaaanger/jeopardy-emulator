@@ -25,7 +25,7 @@ var BoardRow = React.createClass({
       <div className="row">
         {themes.map( themeObj => {
            return (
-              <Clue points={pointValue} themeID={themeObj.id} />
+              <Clue key={themeObj.id} points={pointValue} themeID={themeObj.id} />
            )
         })}
       </div>

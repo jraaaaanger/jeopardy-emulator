@@ -42,12 +42,16 @@ var Board = React.createClass({
     }.bind(this));
   },
 
-  componentDidMount: function() {
+  loadAllColumns: function() {
     var themeCount = this.state.themes.length
     while (themeCount < 6) {
       this.pullRandomCategory()
       themeCount = themeCount + 1
     }
+  },
+
+  componentDidMount: function() {
+    this.loadAllColumns()
   },
 
   componentWillUnmount: function() {
@@ -60,13 +64,13 @@ var Board = React.createClass({
 
     var categories = themeState.map(themeObj => {
       return (
-        <Category category={themeObj.title.toUpperCase()} />
+        <Category key={themeObj.id} category={themeObj.title.toUpperCase()} />
       )
     })
 
     var rows = pointValues.map(points => {
       return (
-        <BoardRow themes={themeState} points={points} />
+        <BoardRow key={points} themes={themeState} points={points} />
       )
     });
 
