@@ -7,8 +7,10 @@
     "node": "5.9.1"
   },
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run webpack -- --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "node_modules/.bin/webpack --config ./webpack.config.js",
+    "heroku-postbuild": "NODE_ENV=production npm run webpack -- -p"
   },
   "author": "",
   "license": "ISC",
