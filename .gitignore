@@ -1,4 +1,4 @@
 node_modules/
 .DS_store
-build/js/bundle.js
+build/bundle.js
 npm-debug.log

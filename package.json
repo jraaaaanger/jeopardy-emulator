@@ -7,8 +7,8 @@
     "node": "5.9.1"
   },
   "scripts": {
-    "postinstall": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "start": "node app.js"
+    "webpack": "webpack --config ./webpack.prod.config.js --progress --colors",
+    "start": "webpack && node app.js"
   },
   "author": "",
   "license": "ISC",
