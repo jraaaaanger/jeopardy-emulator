@@ -5,26 +5,53 @@ import Category from './Category';
 var $ = require ('jquery');
 
 var Board = React.createClass({
-    getInitialState: function() {
-      return {
-        themes: [],
-        score: 0
-      };
-    },
+  getInitialState: function() {
+    return {
+      themes: [],
+      score: 0
+    };
+  },
+
+  replaceIfDouble: function(clue) {
+    let categoryID = clue.category.id
+    let oddSource = 'http://jservice.io/api/clues?value=100&category=' + categoryID
+    let serverRequest = $.get(oddSource, function (result) {
+      if (result.length > 0 ) {
+        this.addCategoryToBoard(clue)
+      } else {
+        this.pullRandomCategory()
+      }
+    }.bind(this));
+  },
+
+  addCategoryToBoard(clueObj) {
+    let themesList = this.state.themes
+    let themeID = clueObj.category.id
+    let theme = clueObj.category.title
+    themesList.push({'id': themeID, 'title': theme})
+    this.setState({
+      themes: themesList
+    })
+  },
+
+  pullRandomCategory: function() {
+    var source = 'http://jservice.io/api/random';
+    let serverRequest = $.get(source, function (result) {
+      let randClue = result[0]
+      this.replaceIfDouble(randClue);
+    }.bind(this));
+  },
+
+  loadAllColumns: function() {
+    var themeCount = this.state.themes.length
+    while (themeCount < 6) {
+      this.pullRandomCategory()
+      themeCount = themeCount + 1
+    }
+  },
 
   componentDidMount: function() {
-    var source = 'http://jservice.io/api/random?count=6';
-    this.serverRequest = $.get(source, function (result) {
-      let themesList = []
-      for (var i = 0; i < 6; i++) {
-        let themeID = result[i].category.id
-        let theme = result[i].category.title
-        themesList.push({'id': themeID, 'title': theme})
-      }
-      this.setState({
-        themes: themesList
-      })
-    }.bind(this));
+    this.loadAllColumns()
   },
 
   componentWillUnmount: function() {
@@ -37,13 +64,13 @@ var Board = React.createClass({
 
     var categories = themeState.map(themeObj => {
       return (
-        <Category category={themeObj.title.toUpperCase()} />
+        <Category key={themeObj.id} category={themeObj.title.toUpperCase()} />
       )
     })
 
     var rows = pointValues.map(points => {
       return (
-        <BoardRow themes={themeState} points={points} />
+        <BoardRow key={points} themes={themeState} points={points} />
       )
     });
 
