@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "webpack --config ./webpack.config.js --progress",
-    "start": "node app.js"
+    "start": "webpack --config ./webpack.config.js --progress && node app.js"
   },
   "author": "",
   "license": "ISC",
