@@ -55,12 +55,14 @@ class Clue extends Component {
     let modalTriggerID = 't' + modalID
     let modalHref = '#' + modalID
     let display
-    let modalClass = 'col clues shadow l2 m4 btn modal-trigger'
+    let modalClass
 
     if (this.state.answered) {
       display = ''
+      modalClass = 'col clues shadow l2 m4'
     } else {
       display = this.state.points
+      modalClass = 'col clues shadow l2 m4 btn modal-trigger'
     }
     return (
       <div>
