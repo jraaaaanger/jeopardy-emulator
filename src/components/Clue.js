@@ -1,42 +1,71 @@
-var React = require('react');
+import React, { Component } from 'react';
 var $ = require('jquery');
 
-var Clue = React.createClass({
-  getInitialState: function() {
-    return {
+class Clue extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
       question: null,
       answer: null,
       points: this.props.points,
       themeID: this.props.themeID,
-      selected: null
-    };
-  },
+      answered: false
+    }
 
-  componentDidMount: function() {
+    this.onClueClick = this.onClueClick.bind(this)
+  }
+
+  onClueClick() {
+    this.setState({answered: true})
+  }
+
+  modifyString(string) {
+    let result = string.toLowerCase()
+    result = result.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+    return result
+  }
+
+  componentDidMount() {
     this.source = 'http://jservice.io/api/clues?category=' + this.state.themeID + '&value='
     let getClues = $.get(this.source + this.state.points, (result) => {
-      var randomClue = result[Math.floor(Math.random()*result.length)]
-
+      let randomClue = result[Math.floor(Math.random()*result.length)]
+      let clueAnswer = randomClue.answer
+      clueAnswer = this.modifyString(clueAnswer)
       this.setState({
         question: randomClue.question.toUpperCase(),
-        answer: randomClue.answer
+        answer: clueAnswer
       })
       }
     )
-  },
+  }
 
-  //called to add the event listener once the clue has question in state
-  componentDidUpdate: function() {
-    bindToClick();
-  },
+  componentDidUpdate() {
+    let theme = this.state.themeID
+    let points = this.state.points
+    if (this.state.answered) {
+      removeClick(theme, points)
+    } else {
+      bindToClick(theme, points)
+    }
+  }
 
   render() {
-    let modalID = this.state.themeID + '-' + this.state.points
+    let modalID = 'm' + this.state.themeID + '-' + this.state.points
+    let modalTriggerID = 't' + modalID
     let modalHref = '#' + modalID
+    let display
+    let modalClass = 'col clues shadow l2 m4 btn modal-trigger'
+
+    if (this.state.answered) {
+      display = ''
+    } else {
+      display = this.state.points
+    }
     return (
       <div>
-        <a className='col clues shadow l2 m4 btn modal-trigger' href={modalHref}>
-          <div className='full-center'>{this.state.points}</div>
+        <a id={modalTriggerID} onClick={this.onClueClick} className={modalClass} href={modalHref}>
+          <div className='full-center'>{display}</div>
         </a>
         <div id={modalID} className='modal'>
           <div className='full-clue modal-content'>
@@ -46,6 +75,6 @@ var Clue = React.createClass({
       </div>
     );
   }
-});
+};
 
 module.exports = Clue;

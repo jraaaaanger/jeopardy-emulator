@@ -3,7 +3,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+
+function render() {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+  );
+};
+
+function ready(fn) {
+ if (document.readyState != 'loading'){
+   fn();
+ } else {
+   document.addEventListener('DOMContentLoaded', fn);
+ }
+};
+
+ready(render);
